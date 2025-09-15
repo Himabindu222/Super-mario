@@ -11,7 +11,9 @@ pipeline {
      }
      stage('Install Dependencies') {
             steps {
+              dir('super-mario-mimic') {
                 sh 'npm install'
+              }
             }
         }
     stage('Test') {
@@ -22,9 +24,11 @@ pipeline {
 
     stage('Build') {
             steps {
+              dir('super-mario-mimic') {
                 sh 'npm run build'
+              }
             }
-        } 
+        }
     stage('docker build') {
             steps {
                 sh 'docker build -t game .'
