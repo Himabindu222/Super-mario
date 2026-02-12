@@ -31,12 +31,12 @@ pipeline {
         }
     stage('docker build') {
             steps {
-                sh 'docker build -t game .'
+                sh 'docker build -t himabindu156/super-mario:v1 .'
             }
         } 
     stage('docker deploy') {
             steps {
-                sh 'docker run -d -p 8070:8080 --name mimic_2 game:latest'
+                sh 'docker run -d -p 8070:80 --name supermario himabindu156/super-mario:v1'
             }
         }    
     }
