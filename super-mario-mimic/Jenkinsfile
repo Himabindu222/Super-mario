@@ -51,7 +51,11 @@ pipeline {
                 } 
         }
     }
-   
+    stage('Push Image') {
+            steps {
+                sh 'docker push $DOCKER_IMAGE:$DOCKER_TAG'
+            }
+        }
     stage('docker deploy') {
             steps {
                 sh 'docker run -d -p 8070:80 --name supermario $DOCKER_IMAGE:$DOCKER_TAG'
